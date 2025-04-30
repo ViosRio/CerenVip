@@ -171,7 +171,7 @@ async def hashtag_handler(client, message: Message):
         if r.status_code == 200 and r.text.strip():
             blocks = r.text.strip().split('<hr>')
             result = "\n\n———\n\n".join(["\n".join(b.split("<br>")).strip() for b in blocks])
-            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode="Markdown")
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
         else:
             await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
     except Exception as e:
