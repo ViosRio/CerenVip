@@ -158,11 +158,12 @@ async def ping(client, message: Message):
 
 # instagram hashtag
 
-@mukesh.on_message(filters.commands(["hashtag"])
-def hashtag_handler(message):
+@Mukesh.on_message(filters.command(["hashtag"]))
+async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/hashtag", "").strip()
     if not tag:
-        return bot.reply_to(message, "✅ KULLANIM :\n\n /hashtag [ ceren ]")
+        await message.reply_text("✅ KULLANIM :\n\n /hashtag [ ceren ]")
+        return
     
     try:
         url = f"https://cerenyaep.serv00.net/client/app/tokplus/data.php?explore={tag}"
@@ -170,11 +171,11 @@ def hashtag_handler(message):
         if r.status_code == 200 and r.text.strip():
             blocks = r.text.strip().split('<hr>')
             result = "\n\n———\n\n".join(["\n".join(b.split("<br>")).strip() for b in blocks])
-            bot.reply_to(message, f"**#{tag}** hakkında:\n\n{result}", parse_mode="Markdown")
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode="Markdown")
         else:
-            bot.reply_to(message, "📛 HATA : \n\n Sonuç Bulunamadı.")
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
     except Exception as e:
-        bot.reply_to(message, f"Hata: {e}")
+        await message.reply_text(f"Hata: {e}")
 
 # song 
 
