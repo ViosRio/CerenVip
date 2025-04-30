@@ -81,7 +81,7 @@ PNG_BTN = [
      ],
 ]
 SOURCE_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('sᴏᴜʀᴄᴇ', url=f"{SOURCE}")]])
-HELP_READ = "➻ MÜZİK KAZIYICI :  \n\n /bul : Youtube Mp3 İndirme Özelliği\n /ping : Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI\n\n /hashtag : İnstagram Trend Madencisi\n /pintag : Pinterest İlgi Alanları Keşfet\n /sms : Tek Kullanımlık Şakalar\n /plaka : Plaka Checker Aracı\n   ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
+HELP_READ = "➻ MÜZİK KAZIYICI :  \n\n /bul = Youtube Mp3 İndirme Özelliği\n\n➻ SAĞLIK ÖLÇER : /ping = Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI :\n\n /hashtag = İnstagram Trend Madencisi\n /pintag = Pinterest İlgi Alanları Keşfet\n /sms = Tek Kullanımlık Şakalar\n /plaka = Plaka Checker Aracı\n  ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
 HELP_BACK = [
      [
            InlineKeyboardButton(text="ᴋᴀʏɴᴀᴋ ", url=f"https://github.com/zeedslowy/CerenyVip"),
@@ -158,6 +158,24 @@ async def ping(client, message: Message):
 
 # instagram hashtag
 
+@mukesh.on_message(filters.commands(["hashtag"])
+def hashtag_handler(message):
+    tag = message.text.replace("/hashtag", "").strip()
+    if not tag:
+        return bot.reply_to(message, "✅ KULLANIM :\n\n /hashtag [ ceren ]")
+    
+    try:
+        url = f"https://cerenyaep.serv00.net/client/app/tokplus/data.php?explore={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("<br>")).strip() for b in blocks])
+            bot.reply_to(message, f"**#{tag}** hakkında:\n\n{result}", parse_mode="Markdown")
+        else:
+            bot.reply_to(message, "📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        bot.reply_to(message, f"Hata: {e}")
+
 # song 
 
 @Mukesh.on_message(filters.command(["song", "bul"]))
@@ -190,7 +208,7 @@ def song(client, message):
 
     except Exception as e:
         m.edit(
-            "**Youtube İçerik Bulunamadı,"
+            "✅ KULLANIM\n\n /song [ YOUTUBE MÜZİK İSİM ]"
         )
         print(str(e))
         return
@@ -215,7 +233,7 @@ def song(client, message):
         m.delete()
     except Exception as e:
         m.edit(
-            f"**» Başarısız,"
+            f"» Başarısız,"
         )
         print(e)
 
