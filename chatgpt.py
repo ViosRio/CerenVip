@@ -81,7 +81,7 @@ PNG_BTN = [
      ],
 ]
 SOURCE_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('sᴏᴜʀᴄᴇ', url=f"{SOURCE}")]])
-HELP_READ = "➻ MÜZİK KAZIYICI :  \n\n /bul = Youtube Mp3 İndirme Özelliği\n\n➻ SAĞLIK ÖLÇER :\n /ping = Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI :\n\n /hashtag = İnstagram Trend Madencisi\n /pintag = Pinterest İlgi Alanları Keşfet\n /sms = Tek Kullanımlık Şakalar\n /plaka = Plaka Checker Aracı\n  ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
+HELP_READ = "➻ MÜZİK KAZIYICI :  \n\n /bul = Youtube Mp3 İndirme Özelliği\n\n➻ SAĞLIK ÖLÇER :\n\n /ping = Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI :\n\n /hashtag = İnstagram Trend Madencisi\n /pintag = Pinterest İlgi Alanları Keşfet\n /sms = Tek Kullanımlık Şakalar\n /plaka = Plaka Checker Aracı\n  ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
 HELP_BACK = [
      [
            InlineKeyboardButton(text="ᴋᴀʏɴᴀᴋ ", url=f"https://github.com/zeedslowy/CerenVip"),
