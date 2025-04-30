@@ -18,6 +18,7 @@ import asyncio,time
 from random import choice
 from datetime import datetime
 import logging
+import json
 
 FORMAT = "[LEGEND-MUKESH] %(message)s"
 logging.basicConfig(
@@ -35,7 +36,7 @@ Mukesh = Client(
 START = f"""
 ๏ 𝗠𝗲𝗿𝗵𝗮𝗯𝗮 🌹
 
-HEY SENİ MÜZİK EVRENİNE IŞINLAYABİLİRİM GRUBUNA EKLEMEK İÇİN NE DURUYORSUN ?
+HEY SENDE MARKETİMİZDEKİ VİP SERVİSLERDEN FAYDALANABİLİRSİN
 """
 xa = bytearray.fromhex("68 74 74 70 73 3A 2F 2F 67 69 74 68 75 62 2E 63 6F 6D 2F 4E 6F 6F 62 2D 6D 75 6B 65 73 68 2F 43 68 61 74 67 70 74 2D 62 6F 74").decode()
 SOURCE = xa
@@ -80,10 +81,10 @@ PNG_BTN = [
      ],
 ]
 SOURCE_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('sᴏᴜʀᴄᴇ', url=f"{SOURCE}")]])
-HELP_READ = "**➻ 𝗞𝘂𝗹𝗹𝗮𝗻ı𝗺 :**  \n\n/bul 𝗬𝗼𝘂𝘁𝘂𝗯𝗲 𝗠𝗽𝟯 𝗜𝗻𝗱𝗶𝗿𝗺𝗲 𝗢𝘇𝗲𝗹𝗹𝗶𝗴𝗶\n\n/ping 𝗕𝗼𝘁𝘂𝗻 𝗦𝗮ğ𝗹ı𝗸 𝗦𝗼𝗿𝘂𝗻𝗹𝗮𝗿ı𝗻ı 𝗧𝗲𝘀𝘁 𝗘𝗱𝗶𝗻\n\nʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
+HELP_READ = "➻ MÜZİK KAZIYICI :  \n\n /bul : Youtube Mp3 İndirme Özelliği\n /ping : Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI\n\n /hashtag : İnstagram Trend Madencisi\n /pintag : Pinterest İlgi Alanları Keşfet\n /sms : Tek Kullanımlık Şakalar\n /plaka : Plaka Checker Aracı\n   ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
 HELP_BACK = [
      [
-           InlineKeyboardButton(text="ᴋᴀʏɴᴀᴋ ", url=f"https://github.com/zeedslowy/ThenaAi"),
+           InlineKeyboardButton(text="ᴋᴀʏɴᴀᴋ ", url=f"https://github.com/zeedslowy/CerenyVip"),
            
      ],
     [
@@ -154,6 +155,8 @@ async def ping(client, message: Message):
                              caption=f"ʜᴇʏ !!\n**[{BOT_NAME}](t.me/{BOT_USERNAME}) ɪ̇ʟᴇᴛɪşɪᴍ ᴠᴇ öɴᴇʀɪ \n➥ `{ms}` ms\n\n**🌹 || [sᴀʜɪᴘ](https://t.me/{OWNER_USERNAME})||",
                              reply_markup=InlineKeyboardMarkup(PNG_BTN),
        )
+
+# instagram hashtag
 
 # song 
 
