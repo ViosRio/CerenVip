@@ -1,40 +1,27 @@
-# YT_DL APİ [BOT]
-<h4>ʜᴀᴋᴋıɴᴅᴀ!</h4>
-<pre><b>Gruplarınızda Veya Özelden Seni Müzikler Evrenine Işınlayabilirim </b></pre>
+# GUNTER API BOT [🐧 Telegram'da Gücün Adı]
 
+> “Bir gün bir bot gelecek,  
+> Müzikten hashlemeye,  
+> Koddan API çağrısına,  
+> Her işi tek başına yapacak...”  
 
-# 𝗞𝗼𝗺𝘂𝘁𝗹𝗮𝗿📝 
-```
-/bul - Youtube Müzik İndirme
-Özeliiği
+Ve işte o geldi.  
+**GUNTER**, Telegram'da çalışan çok yönlü bir API BOT.  
+YouTube'dan müzik indirme, metin hashleme, base64 encode/decode, ping testi ve daha fazlası onun işi.
 
-/ping - ʙᴏᴛᴜɴ 
-sᴀğʟıᴋ sᴏʀᴜɴʟᴀʀıɴı ᴛᴇsᴛ ᴇᴛ
-```
+---
 
-<h3 align="center">
-    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 」─
-</h3>
+## ⚙️ Özellikler
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/zeedslowy/ThenaAi"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
- 
-<h3> ᴋᴜʀᴜʟᴜᴍ ᴠɪᴅᴇᴏ |🇬🇧 </h3>
-<h2> <a href="https://youtu.be/Onq2zNgVQ-U"><img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/Onq2zNgVQ-U",width="500" height="70">
-  </a>  </h2>
+| Komut | Açıklama |
+|-------|----------|
+| `/bul <şarkı>` | YouTube'dan MP3 indirir |
+| `/hash <metin>` | md5, sha1, sha256 hash üretir |
+| `/ping` | Bot sistem durumu ve tepki süresi |
+| `/shorten <url>` | (Yakında) Link kısaltır |
 
-### ʜᴀᴋᴋıᴍıᴢᴅᴀ ❓
+---
 
-<p align="center"><a href="https://t.me/ViosTeam"> <img src="https://img.shields.io/badge/SUPPORT-black?style=for-the-badge" width="220" height="38.45"/></a></p>
+## 🚀 Kurulum
 
-<p align="center"><a href="https://t.me/ViosCeo"> <img src="https://img.shields.io/badge/ᴅᴇsᴛᴇᴋ%20ᴢᴏɴᴇ-blue?style=for-the-badge" width="220" height="38.45"/></a></p>
-
-
-### ʏᴀᴘıᴍᴄıʟᴀʀ ✨
-# 
-<b> [─╼⃝𖠁 ᴍᴜᴋᴇsʜ 𖠁⃝╾─•](https://telegram.me/legend_coder) <br> <br>
- [­ 𝔼𝕣𝕖𝕟](https://telegram.me/WH0907)  </br> <br>
-
-<p><i> ᴅᴏɴ'ᴛ  ғᴏʀɢᴇᴛ ᴛᴏ ɢɪᴠᴇ ᴛʜᴇ  ꜱᴛᴀʀ </i></p>
-
-
-  
+### 1. Gerekli Modülleri Kur:
