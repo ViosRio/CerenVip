@@ -163,7 +163,7 @@ async def ping(client, message: Message):
 async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/pintag", "").strip()
     if not tag:
-        await message.reply_text("✅ KULLANIM :\n\n /pintag [ 3400 ]")
+        await message.reply_text("✅ KULLANIM :\n\n /pintag [ ceren ]")
         return
     
     try:
