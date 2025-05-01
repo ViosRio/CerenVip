@@ -157,8 +157,28 @@ async def ping(client, message: Message):
                              reply_markup=InlineKeyboardMarkup(PNG_BTN),
        )
 
-# hashx
+# sms
+@Mukesh.on_message(filters.command(["sms"]))
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/sms", "").strip()
+    if not tag:
+        await message.reply_text("✅ KULLANIM :\n\n /sms [ 5440000 ]")
+        return
+    
+    try:
+        url = f"https://cerenyaep.serv00.net/client/app/tbomb/data.php?number={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        await message.reply_text(f"Hata: {e}")
 
+
+# hashx
 @Mukesh.on_message(filters.command(["hash"]))
 async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/hash", "").strip()
@@ -178,8 +198,8 @@ async def hashtag_handler(client, message: Message):
     except Exception as e:
         await message.reply_text(f"Hata: {e}")
 
-# Pinterest
 
+# Pinterest
 @Mukesh.on_message(filters.command(["pintag"]))
 async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/pintag", "").strip()
@@ -200,7 +220,6 @@ async def hashtag_handler(client, message: Message):
         await message.reply_text(f"Hata: {e}")
 
 # plaka
-
 @Mukesh.on_message(filters.command(["plaka"]))
 async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/plaka", "").strip()
@@ -223,7 +242,6 @@ async def hashtag_handler(client, message: Message):
 
     
 # instagram hashtag
-
 @Mukesh.on_message(filters.command(["hashtag"]))
 async def hashtag_handler(client, message: Message):
     tag = message.text.replace("/hashtag", "").strip()
@@ -244,7 +262,6 @@ async def hashtag_handler(client, message: Message):
         await message.reply_text(f"Hata: {e}")
 
 # song 
-
 @Mukesh.on_message(filters.command(["song", "bul"]))
 def song(client, message):
 
