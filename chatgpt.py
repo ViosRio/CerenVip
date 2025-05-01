@@ -82,7 +82,7 @@ PNG_BTN = [
      ],
 ]
 SOURCE_BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('sᴏᴜʀᴄᴇ', url=f"{SOURCE}")]])
-HELP_READ = "➻ MÜZİK KAZIYICI :\n\n • /bul = Youtube Mp3 İndirme Özelliği\n\n➻ SAĞLIK ÖLÇER :\n\n • /ping = Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI :\n\n • /hashtag = Tiktok Trend Madencisi\n • /pintag = Pinterest İlgi Alanları Keşfet\n • /sms = Tek Kullanımlık Şakalar\n • /plaka = Plaka Checker Aracı\n\n➻ DELİL KARARTMA :\n\n • /hash = METİNLERİ ŞİFRELE\n ʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
+HELP_READ = "➻ MÜZİK KAZIYICI :\n\n • /bul = Youtube Mp3 İndirme Özelliği\n\n➻ SAĞLIK ÖLÇER :\n\n • /ping = Botun Sağlık Sorunları Test Et\n\n➻ SOSYAL KAZIYICI :\n\n • /hashtag = Tiktok Trend Madencisi\n • /pintag = Pinterest İlgi Alanları Keşfet\n • /sms = Tek Kullanımlık Şakalar\n • /plaka = Plaka Checker Aracı\n\n➻ DELİL KARARTMA :\n\n • /hash = METİNLERİ ŞİFRELE\n\n➻ KİMLİK DENETİM :\n\n • /tc = TC Kişi Analiz\n • /tcgsm = TC Numara Analiz\n • /gsmtc = GSM TC Analiz\n\nʙᴏᴛ ᴠᴇʀsɪᴏɴ ᴠ2.1"
 HELP_BACK = [
      [
            InlineKeyboardButton(text="ᴋᴀʏɴᴀᴋ ", url=f"https://github.com/zeedslowy/CerenVip"),
@@ -156,6 +156,66 @@ async def ping(client, message: Message):
                              caption=f"ʜᴇʏ !!\n**[{BOT_NAME}](t.me/{BOT_USERNAME}) ɪ̇ʟᴇᴛɪşɪᴍ ᴠᴇ öɴᴇʀɪ \n➥ `{ms}` ms\n\n**🌹 || [sᴀʜɪᴘ](https://t.me/{OWNER_USERNAME})||",
                              reply_markup=InlineKeyboardMarkup(PNG_BTN),
        )
+
+# gsm tc
+@Mukesh.on_message(filters.command(["gsmtc"]))
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/gsmtc", "").strip()
+    if not tag:
+        await message.reply_text("✅ KULLANIM :\n\n /gsmtc [ 55880 ]")
+        return
+    
+    try:
+        url = f"https://api.ondex.uk/ondexapi/gsmtcsorgu.php?gsm={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        await message.reply_text(f"Hata: {e}")
+
+# tc gsm
+@Mukesh.on_message(filters.command(["tcgsm"]))
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/tcgsm", "").strip()
+    if not tag:
+        await message.reply_text("✅ KULLANIM :\n\n /tcgsm [ 55880 ]")
+        return
+    
+    try:
+        url = f"https://api.ondex.uk/ondexapi/tcgsmsorgu.php?tc={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        await message.reply_text(f"Hata: {e}")
+
+# tc
+@Mukesh.on_message(filters.command(["tc"]))
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/tc", "").strip()
+    if not tag:
+        await message.reply_text("✅ KULLANIM :\n\n /tc [ 55880 ]")
+        return
+    
+    try:
+        url = f"https://api.ondex.uk/ondexapi/tcprosorgu.php?tc={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        await message.reply_text(f"Hata: {e}")
 
 # sms
 @Mukesh.on_message(filters.command(["sms"]))
