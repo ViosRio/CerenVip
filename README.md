@@ -24,4 +24,18 @@ YouTube'dan müzik indirme, metin hashleme, base64 encode/decode, ping testi ve 
 
 ## 🚀 Kurulum
 
-### 1. Gerekli Modülleri Kur:
+`REPO KLONLA`
+```
+git clone https://github.com/ViosRio/CerenVip
+```
+
+`⚙️ Yapılandırma (config.py)`
+
+İlk olarak `config.py` dosyasını aç ve gerekli alanları doldur:
+
+```python
+# config.py
+
+BOT_TOKEN = "3306:000"
+[ SAFTİRİK DEĞİLSENİZ DİĞERLERİ
+KENDİ BİLGİLERİNE GÖRE DOLDUR ]
