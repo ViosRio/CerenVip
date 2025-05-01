@@ -11,6 +11,7 @@ from pyrogram.types import CallbackQuery
 from config import *
 import requests
 import yt_dlp
+import aiohttp
 from pyrogram import filters
 from youtube_search import YoutubeSearch
 import os,sys,re,requests
@@ -155,6 +156,46 @@ async def ping(client, message: Message):
                              caption=f"ʜᴇʏ !!\n**[{BOT_NAME}](t.me/{BOT_USERNAME}) ɪ̇ʟᴇᴛɪşɪᴍ ᴠᴇ öɴᴇʀɪ \n➥ `{ms}` ms\n\n**🌹 || [sᴀʜɪᴘ](https://t.me/{OWNER_USERNAME})||",
                              reply_markup=InlineKeyboardMarkup(PNG_BTN),
        )
+
+# plaka
+
+@Mukesh.on_message(filters.command(["plaka"]))
+async def plaka_api(client, message: Message):
+    sorgu = message.text.replace("/plaka", "").strip()
+
+    if not sorgu:
+        await message.reply_text("✅ KULLANIM :\n\n /plaka [ 3400 ]")
+        return
+
+    url = f"https://cerenyaep.serv00.net/client/app/plaka/data.php?explore={sorgu}"
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as resp:
+                if resp.status != 200:
+                    await message.reply_text("📛 HATA :\n\n API'ye Ulaşılamıyor.")
+                    return
+
+                data = await resp.json()
+
+                if not data or "Plaka_No" not in data:
+                    await message.reply_text("📛 HATA :\n\n Plaka Bulunamadı.")
+                    return
+
+                isim = data.get("Isim", "-")
+                gsm = data.get("GSMN", "-")
+                tarih = data.get("Tarih", "-")
+                plaka = data.get("Plaka_No", sorgu)
+
+                await message.reply_text(
+                    f"**Plaka:** `{plaka}`\n"
+                    f"**İsim:** `{isim}`\n"
+                    f"**GSM:** `{gsm}`\n"
+                    f"**Tarih:** `{tarih}`"
+                )
+
+    except Exception as e:
+        await message.reply_text(f"Hata Oluştu: {e}")
 
 # instagram hashtag
 
