@@ -160,43 +160,26 @@ async def ping(client, message: Message):
 # plaka
 
 @Mukesh.on_message(filters.command(["plaka"]))
-async def plaka_api(client, message: Message):
-    sorgu = message.text.replace("/plaka", "").strip()
-
-    if not sorgu:
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/plaka", "").strip()
+    if not tag:
         await message.reply_text("✅ KULLANIM :\n\n /plaka [ 3400 ]")
         return
-
-    url = f"https://cerenyaep.serv00.net/client/app/plaka/data.php?explore={sorgu}"
-
+    
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url) as resp:
-                if resp.status != 200:
-                    await message.reply_text("📛 HATA :\n\n API'ye Ulaşılamıyor.")
-                    return
-
-                data = await resp.json()
-
-                if not data or "Plaka_No" not in data:
-                    await message.reply_text("📛 HATA :\n\n Plaka Bulunamadı.")
-                    return
-
-                isim = data.get("Isim", "-")
-                gsm = data.get("GSMN", "-")
-                tarih = data.get("Tarih", "-")
-                plaka = data.get("Plaka_No", sorgu)
-
-                await message.reply_text(
-                    f"**Plaka:** `{plaka}`\n"
-                    f"**İsim:** `{isim}`\n"
-                    f"**GSM:** `{gsm}`\n"
-                    f"**Tarih:** `{tarih}`"
-                )
-
+        url = f"https://cerenyaep.serv00.net/client/app/plaka/data.php?explore={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
     except Exception as e:
-        await message.reply_text(f"Hata Oluştu: {e}")
+        await message.reply_text(f"Hata: {e}")
 
+
+    
 # instagram hashtag
 
 @Mukesh.on_message(filters.command(["hashtag"]))
