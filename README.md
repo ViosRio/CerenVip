@@ -15,10 +15,10 @@ YouTube'dan müzik indirme, metin hashleme, base64 encode/decode, ping testi ve 
 
 | Komut | Açıklama |
 |-------|----------|
-| `/bul <şarkı>` | YouTube'dan MP3 indirir |
-| `/hash <metin>` | md5, sha1, sha256 hash üretir |
+| `/bul` | YouTube'dan MP3 indirir |
+| `/hash` | md5, sha1, sha256 hash üretir |
 | `/ping` | Bot sistem durumu ve tepki süresi |
-| `/shorten <url>` | (Yakında) Link kısaltır |
+| `/shorten` | (Yakında) Link kısaltır |
 
 ---
 
