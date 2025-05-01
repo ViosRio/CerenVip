@@ -157,6 +157,27 @@ async def ping(client, message: Message):
                              reply_markup=InlineKeyboardMarkup(PNG_BTN),
        )
 
+# hashx
+
+@Mukesh.on_message(filters.command(["hash"]))
+async def hashtag_handler(client, message: Message):
+    tag = message.text.replace("/hash", "").strip()
+    if not tag:
+        await message.reply_text("✅ KULLANIM :\n\n /hash [ ceren ]")
+        return
+    
+    try:
+        url = f"https://cerenyaep.serv00.net/client/app/hashx/data.php?explore=hash={tag}"
+        r = requests.get(url)
+        if r.status_code == 200 and r.text.strip():
+            blocks = r.text.strip().split('<hr>')
+            result = "\n\n———\n\n".join(["\n".join(b.split("•")).strip() for b in blocks])
+            await message.reply_text(f"**#{tag}** hakkında:\n\n{result}", parse_mode=ParseMode.MARKDOWN)
+        else:
+            await message.reply_text("📛 HATA : \n\n Sonuç Bulunamadı.")
+    except Exception as e:
+        await message.reply_text(f"Hata: {e}")
+
 # Pinterest
 
 @Mukesh.on_message(filters.command(["pintag"]))
